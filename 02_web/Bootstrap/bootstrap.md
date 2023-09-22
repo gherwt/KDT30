@@ -1,24 +1,27 @@
 
 ## bootstrap
 
-forntend toolkit 이다. 반응형 웹이다.
+forntend toolkit 이다. 반응형 웹을 만들기 위한 코드, 요소들이 모여있다.
 
 그리드 시스템이 오늘의 핵심이다.
 
-결국 화면에 나타나는 것을 만드는 것이다.
+결국 fornt end 즉, 화면에 나타나는 것을 만드는 것이다.
 
-forntend --> HTML을 repsone 를 하는 것임
+
+### forntend vs backend
+
+- forntend --> HTML을 repsone 를 하는 것임
+
+app 도 클라이언트, 프론트 쪽이다. HTML, JSON
  
-server side 에서 코드를 작성하고 HTML을 도출하는 것이 backend
+- server side 에서 코드를 작성하고 HTML을 도출하는 것이 backend 이다.
 
 ![클라이언트 - server 설명](1123.png)
 
 
-현재 클라이언트는 여러가지임.
+현재 클라이언트, browser 는 1개가 아니다. 하지만 browser 에 reponse 하는 server 는 하나이다.
 
-하지만 서버는 하나. 때문에 응답을 클라이언트에 맞게 해줘야 한다. data를 분배한다.
-
-app 도 클라이언트, 프론트 쪽이다. HTML, JSON
+이러한 이유로 응답을 클라이언트에 맞게 해줘야 한다. data를 분배한다.
 
 ex- 컴퓨터, 노트북, 패드, 스마트폰, 스마트폰 app
 
@@ -41,6 +44,7 @@ Sass - css 상위 버전
   
 
 bg - background
+
 
 ### 반응형 web 코드를 짜는 이유?
 
@@ -66,4 +70,4 @@ div = no meaning
 
 
 
-`block 이기 때문에 밑으로 붙어서 나온다.`
+`block 이기 때문에 밑으로 붙어서 나온다.` 이 때문에 flexbox, layout이 중요한 이유이다.
