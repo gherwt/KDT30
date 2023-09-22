@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .bold-red{
+            font-weight: bold;
+            color:red;
+        }
+        .thumbnall {
+            width: 1rem;
+        }
+        .test{
+            margin: 10px;
+            line-height: 2rem;
+            text-align: center;
+        }
+        div {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <!--
+        inline => 선이다
+        1. 선끼리는 자동으로 옆자리로 오는 특성이 있다.
+        2. browser 화면 가로폭(vw)끝에 도달할 때가지 계속 이어진다.
+        3. 상하 margin, padding 이 없다. 좌우는 있어서 지정 가능하다. 
+        4. 당연히 border는 없다.
+        5. 선은 중앙 기준을 잡을 수가 없다. -> 선을 포함하고 있는 블럭(면)에 중앙 정렬을 해야한다.
+    -->
+
+    just <span class="bold-red">Inline</span> Text
+
+    <img class ="thumbnall" src="http://s3.amazonaws.com/pix.iemoji.com/images/emoji/apple/ios-12/256/dog.png" alt ="dog emoji">
+
+    <a href="https://www.google.com">google</a>
+
+    <!-- 1줄 입력창 -->
+    <input type="text">
+
+    <button>gogo</button>
+
+    <!-- 여러 줄 입력창-->
+    <textarea cols="30" rows="5"></textarea>
+
+    <!-- input 과 image 태그는 close 태그가 없다-->
+
+
+    <div>
+        <span class="test">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio nulla facere vitae reiciendis aliquam delectus, reprehenderit sequi harum cupiditate, ratione sed ab qui porro, incidunt aliquid nihil error! Quaerat, pariatur.
+        </span>
+    </div>
+</body>
+</html>
