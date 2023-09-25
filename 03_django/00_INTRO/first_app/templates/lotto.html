@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+    <h1>lotto</h1>
+    <p>
+      {{message}} 
+    </p>
+    <il>
+        {% for num in lucky_numbers%}
+        <li>{{num}}</li>
+        {% endfor %}
+    </il>
+<body>
+
+    
+    {% comment %} Django template Langage
+    alt + b 는 이 html 를 가져오는 것이다.
+    server 에서는 url -> render 함수(이 때 render 함수가 해석을 한다.)로 작업을 실시 -> html 에서 가져오고 -> view
+    {{}} -> 출력 {%} -> 주석 dtl 로 해석
+    lotto = []
+    rnd_num = random.randint(1, 45)
+    # randint() 함수를 사용하여 난수를 생성
+    # value 는 기존 함수의 변수명과 통일해도 무방하다.
+
+    for i in range(6): # 번호 6개를 랜덤으로 추출함
+        while rnd_num in lotto: # 6개가 될 때까지 반복 실행한다.
+            rnd_num = random.randint(1, 45)
+        lotto.append(rnd_num) # 난수를 생성하고 빈 리스트에 저장
+    
+    lotto.sort() # 중복 여부를 확인한다.
+
+    # lucky_numbers = random.sample(range(1, 46), 6)  이렇게 간단하게도 가능하다.
+    # print 로 확인 가능 url 접속을 해서 새로고침을 하면 터미널 창에서 볼 수 있다 {% endcomment %}
+
+
+</body>
+</html>

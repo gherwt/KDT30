@@ -31,6 +31,7 @@ urlpatterns = [
     path('bye/', views.bye),
     # URL pattern 'lotto/' -> 화면에 로또번호 6개를 뽑아서 줌
     path('lotto/', views.lotto),
+    path('lunch/', views.lunch),
 ]
 
 
