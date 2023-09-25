@@ -13,6 +13,8 @@ https://docs.djangoproject.com/en/4.2/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+# __file__ 본인을 의미하는 파일
+# base_dir == 이 프로젝트 폴더를 의미한다. panent = parent
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -20,15 +22,18 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
+# 비밀번호와 같은 역할을 한다. 암호화한 것을 해제할 때 사용한다.
 SECRET_KEY = 'django-insecure--hkna!c(pcy(6f0ds0@v0cu((t9wv&7^1p7*1z)v)d&uw_mruk'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+# 어디에서 호스팅할 것인지 
 ALLOWED_HOSTS = []
 
 
 # Application definition
+# 만들지는 않았지만 이미 다운 받아 사용할 수 있는 것들 
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -37,8 +42,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
+    'first_app',
 ]
 
+# 일종의 filter의 느낌, 중간에서 무엇인가를 해주는 software 들
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
@@ -49,8 +57,11 @@ MIDDLEWARE = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
+# 최상단 conf
+# conf : configuration 설정을 의미함.
 ROOT_URLCONF = 'intro.urls'
 
+# HTML 과 관련된 설정
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -72,6 +83,7 @@ WSGI_APPLICATION = 'intro.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/4.2/ref/settings/#databases
+# model 과 통신. 어떤 DB 와 어떻게 통신할 것인지
 
 DATABASES = {
     'default': {
@@ -103,11 +115,14 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/4.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'ko-kr'
 
 TIME_ZONE = 'UTC'
 
 USE_I18N = True
+# i, n 사이에 18자가 있다는 것을 의미
+# I : internationalizaion : N
+# L10N : L : localization : N
 
 USE_TZ = True
 
