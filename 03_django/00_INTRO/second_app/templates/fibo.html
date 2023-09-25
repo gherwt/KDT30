@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
-    <h1> 두구두구 </h1>
 <body>
-    <p>{{message}}</p>
+    <h1>fibo fibo</h1>
 
-{{lunch_menu }} <!-- key 값에 맞춰져서 나온다-->
+    <ul>
+        {%for num in fibo_numbers %}
+        <li>{{num}}</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>

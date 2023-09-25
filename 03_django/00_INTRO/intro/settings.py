@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'first_app',
+    'second_app',
 ]
 
 # 일종의 filter의 느낌, 중간에서 무엇인가를 해주는 software 들

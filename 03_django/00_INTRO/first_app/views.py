@@ -25,7 +25,8 @@ def lotto(request):
     return render(request, 'lotto.html', context)
 
 def lunch(request):
-    lunch_menu = random.choice(['중식', '양식', '일식', '한식'])
+    menus = ['중식', '양식', '일식', '한식', '패스트푸드', '편의점']
+    lunch_menu = random.choice(menus)
     
     context = {
         'message' : '오늘의 점심은????',
