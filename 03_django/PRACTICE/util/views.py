@@ -10,7 +10,6 @@ def time(request):
 
     now = datetime.now()
 
-    today = now.strftime('%Y-%m-%d %H:%M:%S')
-
-
-    return render(request, 'util/time.html')
+    return render(request, 'util/time.html', {
+        'now' : now
+    })

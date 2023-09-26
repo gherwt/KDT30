@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'review',
     'fake',
+    'User_input',
 ]
 
 MIDDLEWARE = [
