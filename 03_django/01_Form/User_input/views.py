@@ -7,6 +7,7 @@ def hello(request, name):
         'message': message,
     })
 
+## http://127.0.0.1:8000/User_input/hello/name 값을 직접 입력/
 
 def ping(request):
     return render(request, 'User_input/ping.html')
