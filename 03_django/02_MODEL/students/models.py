@@ -23,3 +23,60 @@ class Professor(models.Model):
     major = models.CharField(max_length=100)
     room = models.TextField()
     year = models.IntegerField()
+
+if __name__ == '__main__':
+     pass
+    # CRUD
+
+# # create
+
+# s = Student()
+# s.name = '김학생'
+# s.address = '서울'
+# s.major = '컴공'
+# s.age = '25'
+# s.cgpa = '3.7
+    
+# Student.objects.create(
+#     name='박학생',
+#     major = '경영',
+#     age = 22,
+#     address = '부산',
+#     cgpa = 3.3
+# )
+
+# # read
+
+# #1. 전체 조회
+# Student.objects.all()
+
+# students = Student.objects.all()
+# for student in students:
+#     print(student.pk, student.name, student.major)  
+
+# #2. 단일 조회
+
+# Student.objects.get() # Column 명 = Column 내의 값
+
+# # get 은 중복일 경우에 오류가 발생한다.
+
+# Student.objects.get(id = ''), Student.objects.get(pk = '')
+
+# # 그렇기 때문에 id, pk 값을 사용해준다. id 값은 python 에서 고유 설정된 값이 있기 때문에 충돌 가능성이 있다.
+# #  id = Column 명, pk = Primary Key
+
+# s1 = Student.objects.get(pk=1)
+# s1.name, s1.id, s1.pk, s1.address, s1.cgpa
+    
+# # 이런식으로 변수를 하나 할당해 조회할 수도 있다.
+
+# # 수정
+
+# s1 = Student.objects.get(pk=1)
+# s1.cgpa = 4.0
+# s1.save()
+
+
+# # 삭제
+# s1 = Student.objects.get(pk=1)
+# s1.delete()
