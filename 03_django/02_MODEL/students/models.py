@@ -15,7 +15,7 @@ class Student(models.Model):
 
 # 새로운 값을 추가 시 default 값을 설정해줘야함
 # 새로운 값 추가하면 기존 값들에는 빈값이 생기기 때문에 문제가 발생할 수 있다.
-# 0001 , 0002 쌓이는 것은 버전이다. versioning 이 가능\
+# 0001 , 0002 쌓이는 것은 버전이다. versioning 이 가능
 # schema 를 설계, table 을 만든다. 설정한다.
 
 class Professor(models.Model):
