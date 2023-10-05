@@ -1,0 +1,11 @@
+{% extends "base.html" %} 
+
+{% block content %}
+
+<h1> 글 목록입니다.</h1>
+
+{%for char in detail %}
+<li>{{detail}}</li>
+{% endfor %}
+
+{% endblock content %}
