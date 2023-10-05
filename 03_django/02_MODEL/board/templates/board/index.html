@@ -2,10 +2,14 @@
 
 {% block content %}
 
-<h1> 글 목록입니다.</h1>
-
-{%for char in detail %}
-<li>{{detail}}</li>
-{% endfor %}
+<ul>
+    {% for article in articles  %}
+    <li>
+       <a href="/board/{{article.pk}}">
+        {{ article.title }}
+    </a>
+    </li>
+    {% endfor %}
+</ul>
 
 {% endblock content %}

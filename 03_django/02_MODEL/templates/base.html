@@ -6,18 +6,14 @@
     <title>Document</title>
 </head>
 <body>
-    <li>
-        <a href="/board/">Index</a>
-    </li>
-    <li>
-        <a href="/board/new/">New</a>
-    </li>
-    <li>
-        <a href="/board/<int:pk>/">detail</a>
-    </li>
-    <li>
-        <a href="/board/edit/">Edit</a>
-    </li>
+    <nav>
+        <li>
+            <a href="/board/">Home</a>
+        </li>
+        <li>
+            <a href="/board/new/">New</a>
+        </li>
+    </nav>
     {% block content %}{% endblock content  %}
 </body>
 </html>

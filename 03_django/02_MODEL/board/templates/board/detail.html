@@ -2,6 +2,21 @@
 
 {% block content %}
 
-<h1> 글 상세보기입니다.</h1>
+<h1> {{article.title}} </h1>
 
+<p>
+   {{article.content}}
+</p>
+
+<div>
+   <a href="/board/{{article.pk}}/edit/">
+      <button>수정</button>
+</div>
+<div>
+   <a href= "/board/{{article.pk}}/delete/">
+      <button onclick = "return confirm('진짜 삭제??')">
+         삭제
+      </button>
+   </a>
+</div>
 {% endblock content %}
