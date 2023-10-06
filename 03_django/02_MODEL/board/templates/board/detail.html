@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<h1> {{article.title}} </h1>
+<h1> {{article.name}} </h1>
 
 <p>
    {{article.content}}
@@ -14,7 +14,7 @@
 </div>
 <div>
    <a href= "/board/{{article.pk}}/delete/">
-      <button onclick = "return confirm('진짜 삭제??')">
+      <button onclick = return confirm('진짜 삭제??')>
          삭제
       </button>
    </a>

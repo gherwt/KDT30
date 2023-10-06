@@ -1,0 +1,30 @@
+{% extends "base2.html" %} 
+
+{% block content %}
+
+<h1> {{student.name}} </h1>
+
+<p>
+   {{student.age}}
+</p>
+
+<p>
+   {{student.major}}
+</p>
+
+<p>
+   {{student.description}}
+</p>
+
+<div>
+   <a href="/school/{{student.pk}}/edit/">
+      <button>수정</button>
+</div>
+<div>
+   <a href= "/school/{{student.pk}}/delete/">
+      <button onclick = return confirm('삭제하시겠습니까?')>
+         삭제
+      </button>
+   </a>
+</div>
+{% endblock content %}
