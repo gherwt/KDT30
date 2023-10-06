@@ -17,12 +17,14 @@ def create(request):
 
 def index(request):
     students = Student.objects.all()
+
     return render(request, 'crud/index.html', {
         'students' : students,
     })
 
 def detail(request, pk):
-    student = Student.objects.get(pk=pk)    
+    student = Student.objects.get(pk=pk) 
+
     return render(request, 'crud/detail.html', {
         'student' : student,
     })
@@ -48,4 +50,5 @@ def update(request, pk):
 def delete(request, pk):
     student = Student.objects.get(pk=pk)
     student.delete()
+    
     return redirect('/school/')
