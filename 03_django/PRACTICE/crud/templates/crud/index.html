@@ -1,11 +1,12 @@
 {% extends "base2.html" %} 
 
 {% block content %}
+<h1>학생 목록</h1>
 <ul>
    {% for student in students %}
    <li>
       <a href= "/school/{{student.pk}}">
-         {{ student.name }}
+         {{ student.name }} => {{student.major}}
       </a> 
    </li>   
    {% endfor %}

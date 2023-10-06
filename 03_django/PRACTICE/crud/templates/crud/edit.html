@@ -3,29 +3,31 @@
 {% block content %}
 <h1>학생 정보 수정</h1>
 
-<form action= "/school/{{student.pk}}/update/">
+<form action= "/school/{{student.pk}}/update/"> <!-- 설정한 값들을 update로 보내줄거임-->
    <div>
-      <label for="name">이름 :</label>
-      <input type="text" id="name" name="name" value = {{student.name}}>
+      <label for="student_name">이름 :</label>
+      <input type="text" id="student_name" name="student_name" value = {{student.name}}>
+      <!-- HTMl에서는 attribute 순서가 딱히 상관없다. -->
    </div>
    
    <div>
-      <label for="age">나이 :</label>
-      <input type="number" id = "age" name ="age" value = {{student.age}}> 
+      <label for="student_age">나이 :</label>
+      <input type="number" id = "student_age" name ="student_age" value = {{student.age}}> 
    </div>
 
    <div>
-      <label for="major">전공 : </label>
-      <input type="text" id = "major" name ="major" value = {{student.major}}>
+      <label for="student_major">전공 : </label>
+      <input type="text" id = "student_major" name ="student_major" value = {{student.major}}>
    </div>
    
    <div>
-      <label for="description">세부사항 :</label>
-      <textarea name ="description" id = "description" cols = "30" rows = "10">{{student.description}}</textarea>
+      <label for="student_description">세부사항 :</label>
+      <textarea name ="student_description" id = "student_description" cols = "30" rows = "10">{{student.description}}</textarea>
+      <!-- inline 요소이기 때문에 특성상 붙여서 써줘야 한다.-->
    </div> 
 
     <div>
-        <button>수정하기</button>
+        <button>학생 수정</button>
     </div>
 </form>
 

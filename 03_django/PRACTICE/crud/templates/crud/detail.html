@@ -17,12 +17,13 @@
 </p>
 
 <div>
-   <a href="/school/{{student.pk}}/edit/">
+   <a href="/school/{{student.pk}}/edit/"> 
+      <!--여기서 받아온 pk 값을 edit 로 가져가서 고치겠다는 의미-->
       <button>수정</button>
 </div>
 <div>
    <a href= "/school/{{student.pk}}/delete/">
-      <button onclick = return confirm('삭제하시겠습니까?')>
+      <button onclick = "return confirm('삭제하시겠습니까?')">
          삭제
       </button>
    </a>

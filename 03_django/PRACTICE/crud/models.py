@@ -5,3 +5,5 @@ class Student(models.Model):
     age = models.IntegerField()
     major = models.CharField(max_length=10)
     description = models.TextField()
+
+    
