@@ -14,7 +14,7 @@ def create(request):
     student.description = request.GET['student_description']
     student.save() # 저장됨 => id(pk)가 생긴다.
     
-    return redirect(f'/school/{student.pk}/')
+    return redirect('crud:detail', student.pk)
 
 def index(request):
     # 전체 학생 목록 확인하기
@@ -48,11 +48,13 @@ def update(request, pk):
     student.description = request.GET['student_description']
     student.save() # 여기서는 저장되면서 id 가 생기지는 않는다.
 
-    return redirect(f'/school/{student.pk}/')
+    return redirect('crud:detail', student.pk)
 
 def delete(request, pk):
     # URL 에 넘어온 pk 에 해당하는 학생정보를 삭제한다.
     student = Student.objects.get(pk=pk)
     student.delete()
     
-    return redirect('/school/')
+    return redirect('crud:index')
+    # DTL(템플릿) {% url "crud:index" %}
+    # view 에서 redirect -> "crud:index" 이렇게 쓰면 된다.

@@ -3,7 +3,7 @@
 {% block content %}
 <h1>학생 정보 수정</h1>
 
-<form action= "/school/{{student.pk}}/update/"> <!-- 설정한 값들을 update로 보내줄거임-->
+<form action= {% url "crud:update" student.pk %}> <!-- 설정한 값들을 update로 보내줄거임-->
    <div>
       <label for="student_name">이름 :</label>
       <input type="text" id="student_name" name="student_name" value = {{student.name}}>

@@ -1,7 +1,7 @@
 {% extends "base2.html" %} 
 
 {% block content %}
-<form action="/school/create/">
+<form action="{% url "crud:create" %}">
 
    <div>
       <label for="student_name">이름 :</label>

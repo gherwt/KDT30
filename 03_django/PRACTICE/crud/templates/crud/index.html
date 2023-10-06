@@ -5,7 +5,7 @@
 <ul>
    {% for student in students %}
    <li>
-      <a href= "/school/{{student.pk}}">
+      <a href= {% url "crud:detail" student.pk %}>
          {{ student.name }} => {{student.major}}
       </a> 
    </li>   
