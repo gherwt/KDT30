@@ -41,7 +41,7 @@ def create(request):
         if form.is_valid():
             article = form.save()
             return redirect('board:detail', article.pk)
-    return render(request, 'board/new.html', {
+    return render(request, 'board/form.html', {
         'form' : form,
         })
  
@@ -96,7 +96,7 @@ def edit(request, pk):
             article = form.save()
             return redirect('board:detail', article.pk)
         
-    return render(request, 'board/edit.html', {
+    return render(request, 'board/form.html', {
         # 'article' : article,
         'form' : form,
     })
