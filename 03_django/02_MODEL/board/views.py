@@ -8,42 +8,42 @@ from .forms import ArticleForm
 # Where => /board/create/
 # How => POST, GET 의 차이로 같은 URL 에서 다른 동작을 할 수 있는 것임.
 
-def create(request): 
-    if request.method == 'GET':
-        form = ArticleForm() # input tag 를 대신 생성
-        return render(request, 'board/form.html', {
-                'form' : form,
-        }) 
-    
-    # 데이터 입력
-    elif request.method == 'POST':
-        form = ArticleForm(data=request.POST)
-        # 데이터 검증 
-        # 유효한 데이터라면,
-        if form.is_valid():
-            # validation -> 유효성 검증// is_(T or F return)
-            # 저장
-            article = form.save()
-            return redirect('board:detail', article.pk)
-        
-        # 유효하지 않은 데이터라면,
-        else:
-            return render(request, 'board/form.html', {
-                'form' : form,
-            })
-
-# 리펙토링 후
 # def create(request): 
 #     if request.method == 'GET':
-#         form = ArticleForm()
+#         form = ArticleForm()  input tag 를 대신 생성
+#         return render(request, 'board/form.html', {
+#                 'form' : form,
+#         }) 
+    
+#     # 데이터 입력
 #     elif request.method == 'POST':
 #         form = ArticleForm(data=request.POST)
+        # 데이터 검증 
+        # 유효한 데이터라면,
 #         if form.is_valid():
+             # validation -> 유효성 검증// is_(T or F return)
+             # 저장
 #             article = form.save()
 #             return redirect('board:detail', article.pk)
-#     return render(request, 'board/new.html', {
-#         'form' : form,
-#         })
+        
+         # 유효하지 않은 데이터라면,
+#         else:
+#             return render(request, 'board/form.html', {
+#                 'form' : form,
+#             })
+
+# 리펙토링 후
+def create(request): 
+    if request.method == 'GET':
+        form = ArticleForm()
+    elif request.method == 'POST':
+        form = ArticleForm(data=request.POST)
+        if form.is_valid():
+            article = form.save()
+            return redirect('board:detail', article.pk)
+    return render(request, 'board/new.html', {
+        'form' : form,
+        })
  
 # read
 
@@ -64,19 +64,19 @@ def detail(request, pk):
 # def update(request, pk):
 
 #     article = Article.objects.get(pk=pk)
-#     # 기존에 있는 data 를 가져온다.
+     # 기존에 있는 data 를 가져온다.
 #     form = ArticleForm(data=request.POST, instance = article)
     
-#     # 데이터 검증 
+     # 데이터 검증 
 
-#     # 유효한 데이터라면,
+     # 유효한 데이터라면,
 #     if form.is_valid():
-#         # validation -> 유효성 검증// is_(T or F return)
-#         # 저장
+        # validation -> 유효성 검증// is_(T or F return)
+        # 저장
 #         article = form.save()
 #         return redirect('board:detail', article.pk)
     
-#     # 유효하지 않은 데이터라면,
+     # 유효하지 않은 데이터라면,
 #     else:
 #         return render(request, 'board/form.html', {
 #             'article' : article,
@@ -86,7 +86,7 @@ def detail(request, pk):
 # update
 def edit(request, pk):
     article = Article.objects.get(pk=pk)
-    
+
     if request.method == 'GET':
         form = ArticleForm(instance = article)
 
