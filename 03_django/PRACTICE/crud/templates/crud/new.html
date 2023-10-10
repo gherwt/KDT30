@@ -1,31 +1,14 @@
 {% extends "base2.html" %} 
 
 {% block content %}
-<form action="{% url "crud:create" %}">
+<form action= "{% url "crud:create" %}" method = "POST">
+   {% csrf_token %}
 
-   <div>
-      <label for="student_name">이름 :</label>
-      <input type="text" id="student_name" name="student_name">
-   </div>
-   
-   <div>
-      <label for="student_age">나이 :</label>
-      <input type="number" id = "student_age" name ="student_age">
-   </div>
-
-   <div>
-      <label for="student_major">전공 : </label>
-      <input type="text" id = "student_major" name ="student_major">
-   </div>
-   
-   <div>
-      <label for="student_description">세부사항 :</label>
-      <textarea name ="student_description" id = "student_description" cols = "30" rows = "10"></textarea>
-   </div>
+   {{form.as_p}}
 
    <div>
       <button>입력</button>
-  </div>
+   </div>
 
 </form>
 
