@@ -1,20 +1,35 @@
 from django.shortcuts import render, redirect
+
 from .models import Article 
+from .forms import ArticleForm
 
 # Create
 def new(request):
-    return render(request, 'board/new.html')
+    form = ArticleForm() # input tag 를 대신 생성
+    return render(request, 'board/new.html', {
+        'form' : form,
+    }) 
 
 def create(request):
 
-    article = Article()
-    article.title = request.GET['title']
-    article.content = request.GET['content']
-    article.save()
+    # 데이터 입력
+    form = ArticleForm(data=request.POST)
     
-    # redirect 강제로 이동시키는 method
-    return redirect(f'/board/{article.pk}/')
+    # 데이터 검증 
 
+    # 유효한 데이터라면,
+    if form.is_valid():
+        # validation -> 유효성 검증// is_(T or F return)
+        # 저장
+        article = form.save()
+        return redirect('board:detail', article.pk)
+    
+    # 유효하지 않은 데이터라면,
+    else:
+        return render(request, 'board/new.html', {
+            'form' : form,
+        })
+ 
 # read
 
 def index(request):
@@ -33,22 +48,39 @@ def detail(request, pk):
 # update
 def edit(request, pk):
     article = Article.objects.get(pk=pk)
+    form = ArticleForm(instance = article)
+
     return render(request, 'board/edit.html', {
         'article' : article,
+        'form' : form,
     })
 
 
 def update(request, pk):
 
     article = Article.objects.get(pk=pk)
-    article.title = request.GET['title']
-    article.content = request.GET['content']
-    article.save()
+    # 기존에 있는 data 를 가져온다.
+    form = ArticleForm(data=request.POST, instance = article)
+    
+    # 데이터 검증 
 
-    return redirect(f'/board/{article.pk}/')
+    # 유효한 데이터라면,
+    if form.is_valid():
+        # validation -> 유효성 검증// is_(T or F return)
+        # 저장
+        article = form.save()
+        return redirect('board:detail', article.pk)
+    
+    # 유효하지 않은 데이터라면,
+    else:
+        return render(request, 'board/edit.html', {
+            'article' : article,
+            'form' : form,
+        })
+ 
 
 # delete
 def delete(request, pk):
     article = Article.objects.get(pk=pk)
     article.delete()
-    return redirect('/board/')
+    return redirect('board:index')

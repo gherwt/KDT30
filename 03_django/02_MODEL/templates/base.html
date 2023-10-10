@@ -8,10 +8,10 @@
 <body>
     <nav>
         <li>
-            <a href="/board/">Home</a>
+            <a href="{% url "board:index" %}">Home</a>
         </li>
         <li>
-            <a href="/board/new/">New</a>
+            <a href="{% url "board:new" %}">New</a>
         </li>
     </nav>
     {% block content %}{% endblock content  %}

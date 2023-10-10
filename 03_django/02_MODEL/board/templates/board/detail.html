@@ -9,11 +9,11 @@
 </p>
 
 <div>
-   <a href="/board/{{article.pk}}/edit/">
+   <a href= {% url "board:edit" article.pk %}>
       <button>수정</button>
 </div>
 <div>
-   <a href= "/board/{{article.pk}}/delete/">
+   <a href= {% url "board:delete" article.pk %}>
       <button onclick = return confirm('진짜 삭제??')>
          삭제
       </button>
