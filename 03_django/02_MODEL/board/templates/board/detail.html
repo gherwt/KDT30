@@ -13,10 +13,12 @@
       <button>수정</button>
 </div>
 <div>
-   <a href= {% url "board:delete" article.pk %}>
+   <form action= "{% url "board:delete" article.pk %}" method = "POST">
+      {% csrf_token %}
       <button onclick = return confirm('진짜 삭제??')>
          삭제
       </button>
-   </a>
+   </form>
 </div>
+
 {% endblock content %}
