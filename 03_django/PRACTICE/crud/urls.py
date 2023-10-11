@@ -11,9 +11,7 @@ app_name = 'crud'
 urlpatterns = [
     path('', views.index, name = 'index'), # ex) crud:index
     path('new/', views.new, name = 'new'), # ex) crud:new
-    path('create/', views.create, name = 'create'), # ex) crud:create
     path('<int:pk>/', views.detail, name = 'detail'), # ex) crud:detail
-    path('<int:pk>/edit/', views.edit, name = 'edit'), # ex) crud:edit
-    path('<int:pk>/update/', views.update, name = 'update'), # ex) crud:update
+    path('<int:pk>/update/', views.update, name = 'update'), # ex) crud:edit
     path('<int:pk>/delete/', views.delete, name = 'delete'),  # ex) crud:delete
 ]

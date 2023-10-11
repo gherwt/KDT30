@@ -1,7 +1,7 @@
 {% extends "base2.html" %} 
 
 {% block content %}
-<form action= "{% url "crud:create" %}" method = "POST">
+<form method = "POST">
    {% csrf_token %}
 
    {{form.as_p}}
@@ -11,5 +11,4 @@
    </div>
 
 </form>
-
 {% endblock content %}
