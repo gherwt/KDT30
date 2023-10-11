@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django_extensions',
     # my apps
     'board',
+    'accounts',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

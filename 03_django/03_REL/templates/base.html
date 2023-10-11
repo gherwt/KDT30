@@ -11,7 +11,16 @@
             <a href="{% url "board:index" %}">Home</a>
         </li>
         <li>
+            <a href="{% url "accounts:login" %}">Login</a>
+        </li>
+        <li>
+            <a href="{% url "accounts:signup" %}">signup</a>
+        </li>
+        <li>
             <a href="{% url "board:create" %}">New</a>
+        </li>
+        <li>
+            <a href="{% url "accounts:logout" %}">Logout</a>
         </li>
     </nav>
     {% block content %}{% endblock content  %}
