@@ -1,40 +1,13 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_safe, require_POST, require_http_methods
 
-from .models import Article 
+from .models import Article, Comment 
 from .forms import ArticleForm
 
 
 # 요청 -> WHERE(=URL), HOW(=METHOD)
 # Where => /board/create/
 # How => POST, GET 의 차이로 같은 URL 에서 다른 동작을 할 수 있는 것임.
-
-# def create(request): 
-#     if request.method == 'GET':
-#         form = ArticleForm()  input tag 를 대신 생성
-#         return render(request, 'board/form.html', {
-#                 'form' : form,
-#         }) 
-    
-#     # 데이터 입력
-#     elif request.method == 'POST':
-#         form = ArticleForm(data=request.POST)
-        # 데이터 검증 
-        # 유효한 데이터라면,
-#         if form.is_valid():
-             # validation -> 유효성 검증// is_(T or F return)
-             # 저장
-#             article = form.save()
-#             return redirect('board:detail', article.pk)
-        
-         # 유효하지 않은 데이터라면,
-#         else:
-#             return render(request, 'board/form.html', {
-#                 'form' : form,
-#             })
-
-# 리펙토링 후
-
 @require_http_methods(['GET', 'POST'])
 def create(request): 
     if request.method == 'GET':
@@ -43,7 +16,9 @@ def create(request):
     elif request.method == 'POST':
         form = ArticleForm(data=request.POST)
         if form.is_valid():
-            article = form.save()
+            article = form.save(commit=False)
+            article.user = request.user
+            article.save()
             return redirect('board:detail', article.pk)
         
     return render(request, 'board/form.html', {
@@ -59,6 +34,7 @@ def index(request):
         'articles' : articles,
     })
 
+
 @require_safe
 def detail(request, pk):
     # article = Article.objects.get(pk=pk)
@@ -68,28 +44,6 @@ def detail(request, pk):
     })
 
 
-# def update(request, pk):
-
-#     article = Article.objects.get(pk=pk)
-     # 기존에 있는 data 를 가져온다.
-#     form = ArticleForm(data=request.POST, instance = article)
-    
-     # 데이터 검증 
-
-     # 유효한 데이터라면,
-#     if form.is_valid():
-        # validation -> 유효성 검증// is_(T or F return)
-        # 저장
-#         article = form.save()
-#         return redirect('board:detail', article.pk)
-    
-     # 유효하지 않은 데이터라면,
-#     else:
-#         return render(request, 'board/form.html', {
-#             'article' : article,
-#             'form' : form,
-#         })
-    
 # update
 @require_http_methods(['GET', 'POST'])
 def edit(request, pk):
@@ -108,9 +62,9 @@ def edit(request, pk):
         # 'article' : article,
         'form' : form,
     })
+
 # url 에서 update 를 지우고 edit 만 살리고
 # detail 에서 update 를 edit 으로
-
 # delete - POST 요청을 보내야한다. DB에 영향을 미치기 때문임.
 
 @require_POST

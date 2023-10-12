@@ -18,10 +18,3 @@ class ArticleForm(forms.ModelForm):
             attrs={'class' : 'my-class'}
         )
     )
-
-
-    class Meta:
-        model = Article
-        fields = '__all__'
-        # fiedls = ('title',)
-

@@ -24,7 +24,7 @@
             <a href="{% url "board:create" %}">New</a>
         </li>
         <li>
-            <a href="{% url "accounts:logout" %}">Logout</a>
+            <a href="{% url "accounts:logout" %}"> {{request.user}} - Logout</a>
         </li>
     </nav>
     {% endif %}

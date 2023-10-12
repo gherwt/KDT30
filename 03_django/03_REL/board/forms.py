@@ -1,6 +1,6 @@
 # board/forms
 from django import forms
-from .models import Article
+from .models import Article, Comment
 
 # 0. 조건이다. (fields에 적힌 컬럼에 대해서만) 
 # 1. 입력 데이터 검증 -> 저장
@@ -18,10 +18,13 @@ class ArticleForm(forms.ModelForm):
             attrs={'class' : 'my-class'}
         )
     )
-
-
     class Meta:
         model = Article
-        fields = '__all__'
         # fiedls = ('title',)
+        exclude = ('user', )
 
+class CommentForm(forms.ModelForm):
+    
+    class Meta:
+        model = Comment
+        fields = '__all__'

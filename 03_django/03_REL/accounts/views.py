@@ -11,6 +11,7 @@ def signup(request):
     # 요청 보낸 사용자가 인증되었다면 => 바로 돌려보내기
     if request.user.is_authenticated:
         return redirect('board:index')
+    
     if request.method == 'POST':
         form = UserCreationForm(data = request.POST)
         if form.is_valid():
