@@ -8,9 +8,12 @@
 <body>
     <nav>
       <ul>
+        <!-- 기본적으로 Home 화면은 보여준다.-->
         <li>
           <a href="{% url "crud:index" %}">Home</a>
         </li>
+
+        <!-- 유저에게 권한이 없다면 보여주는 화면(로그인이 되어 있지 않다면)-->
         {% if not request.user.is_authenticated %}
         
         <li>
@@ -21,6 +24,7 @@
           <a href="{% url "accounts:signup" %}">회원가입</a>
         </li>
 
+        <!-- 로그인되어 있을 때 보여주는 화면-->
         {% else %}
         <li>
           <a href="{% url "crud:new" %}">New</a>
