@@ -13,7 +13,9 @@ def new(request):
     elif request.method == 'POST':
         form = StudentForm(data = request.POST)
         if form.is_valid():
-            student = form.save() 
+            student = form.save(commit=False)
+            student.user = request.user
+            form.save()
             return redirect('crud:detail', student.pk)
         
     return render(request, 'crud/form.html', {

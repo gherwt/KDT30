@@ -4,6 +4,9 @@
 <h1>학생 목록</h1>
 <ul>
    {% for student in students %}
+   <div>
+      작성자 : {{student.user}}
+   </div>  
    <li>
       <a href= "{% url "crud:detail" student.pk %}">
          {{ student.name }} => {{student.major}}
