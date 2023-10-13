@@ -8,6 +8,9 @@
    {{article.content}}
 </p>
 
+
+{% if article.user == request.user %}
+
 <div>
    <a href= {% url "board:edit" article.pk %}>
       <button>수정</button>
@@ -23,25 +26,12 @@
    </form>
 </div>
 
+{% endif %}
+
+
 <hr>
+<!-- include 를 통해서 부품화 시킬 수 있다.-->
+{% include "board/detail_comment.html" %}
 
-<form action="{% url "board:create_comment" article.pk %}" method = "POST">
-   {% csrf_token %}
-   {{ form }}
-   <button>댓글 작성</button>
-</form>
-
-<div>
-   {% for comment in article.comment_set.all  %}
-   
-      <li>{{comment.user}} -> {{comment.content}}
-         <form action="{% url "board:delete_comment" article.pk comment.pk %}" method = "POST" style = "display: inline-block;"> 
-            {% csrf_token %}
-            <button onclick = "return confirm('댓글 삭제?')">삭제</button>
-         </form>
-      </li>
-
-   {% endfor %}
-</div>
 
 {% endblock content %}

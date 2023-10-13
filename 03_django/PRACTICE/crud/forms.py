@@ -1,5 +1,5 @@
 from django import forms
-from .models import Student
+from .models import Student, Reply
 
 class StudentForm(forms.ModelForm):
     # 여기에 검증식을 추가 설정해줄 수 있다.
@@ -30,3 +30,12 @@ class StudentForm(forms.ModelForm):
         model = Student
         exclude = ('user', )
         fields = '__all__'
+
+
+
+class ReplyForm(forms.ModelForm):
+            
+    class Meta:
+        model = Reply
+        fields = ("content", "rank")
+        

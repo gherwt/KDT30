@@ -1,0 +1,30 @@
+<!-- 작업을 요청한 유저가 로그인이 되어 있을 때만 보여준다.-->
+{% if request.user.is_authenticated %}
+
+<!-- univ_create 를 실행하는데 student.pk 와 연결되게 -->
+
+<form action="{% url "crud:univ_create" student.pk%}" method = "POST">
+    
+    {% csrf_token %}
+    <!--ReplyForm 이 나오게 한다.-->
+    {{ form }}
+
+    <button>댓글 작성</button>
+</form>
+{% endif %}
+
+<!-- 1(student)에서 n(reply) 을 가져오는 역참조-->
+<div>
+    {% for reply in student.reply_set.all %}
+
+    <li> {{reply.user}} -> {{reply.content}}
+        <!-- 요청 user 가 reply 를 작성한 유저와 같을 경우-->
+        {% if request.user == reply.user %}
+            <form action= "{% url "crud:univ_delete" student.pk reply.pk %}" method = "POST">
+            {% csrf_token %}
+            <button onclick = "return confirm('삭제하시겠습니까?')">삭제</button>
+            </form>
+        {% endif %}
+    </li>
+    {% endfor %} 
+ </div>
