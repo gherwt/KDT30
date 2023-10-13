@@ -10,9 +10,6 @@ from .forms import StudentForm, ReplyForm
 @login_required
 @require_http_methods(['GET', 'POST'])
 def new(request):
-    # 유저가 로그인 되어 있을 때 상세페이지를 나타나게 한다.
-    if request.user_is_authedicated:
-        return redirect('crud:detail', student.pk)
 
     if request.method == 'GET':
         form = StudentForm()
@@ -50,12 +47,13 @@ def detail(request, pk):
     form = ReplyForm()
 
     # stundent 에서 reply를 역참조한다(1에서 n 값을 가져온다.)
-    replys = student.reply_set.all()
+    # html 에서 설정 또는 views 에서 설정
+    # replys = student.reply_set.all()
 
     return render(request, 'crud/detail.html', {
         'student' : student,
         'form' : form,
-        'replys' : replys,
+        #'replys' : replys,
     })
 
 
@@ -65,11 +63,14 @@ def update(request, pk):
     student = get_object_or_404(Student, pk=pk)
     
     # 요청한 유저, 현재 로그인 되어 있는 유저가 student 를 작성한 유저가 아닐 경우
+    # 접근하지 못하도록 한다.
     if request.user != student.user:
+
         # 메인 페이지를 보여준다.
         return redirect('crud:index',)
     
     # get 요청이면 form 을 보여준다.
+    # NEW 와 합쳐진 것임.
     if request.method == 'GET':
         form = StudentForm(instance = student)   
 
