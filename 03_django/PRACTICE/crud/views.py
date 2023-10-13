@@ -38,6 +38,7 @@ def index(request):
         'students' : students,
     })
 
+
 @login_required
 @require_safe    
 def detail(request, pk):
@@ -122,7 +123,7 @@ def univ_delete(request, pk, reply_pk):
     # 글에 작성되어져 있는 univ 의 reply 값이 필요하다.
     reply = get_object_or_404(Reply, pk = reply_pk)
 
-    # 만약 유저가 로그인 되어 있으면
+    # 만약 요청 유저와 작성 유저가 다르다면
     if request.user != reply.user:
         # detail 창을 보여주고
         return redirect('crud:detail', )
