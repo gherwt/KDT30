@@ -11,5 +11,10 @@ urlpatterns = [
     path('<int:pk>/edit/',views.edit, name = 'edit'),
     # path('<int:pk>/update/',views.update, name = 'update'),
     path('<int:pk>/delete/',views.delete, name = 'delete'),
+
+    # board/1/comments/create/
+    path('<int:pk>/comments/create/', views.create_comment, name ='create_comment'),
+    # board/1/comments/delete/
+    path('<int:pk>/comments/<int:comment_pk>/delete/', views.delete_comment, name ='delete_comment'),
 ]
 

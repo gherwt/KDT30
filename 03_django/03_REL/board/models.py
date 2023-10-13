@@ -19,8 +19,8 @@ class Article(models.Model):
 class Comment(models.Model):
 
     # 클래스 명은 "" 씌워주지 않아도 된다.
-    article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    article_id = models.ForeignKey(Article, on_delete=models.CASCADE)
 
     content = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)

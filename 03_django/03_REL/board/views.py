@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.views.decorators.http import require_safe, require_POST, require_http_methods
 
 from .models import Article, Comment 
-from .forms import ArticleForm
+from .forms import ArticleForm, CommentForm
 
 
 # 요청 -> WHERE(=URL), HOW(=METHOD)
@@ -30,6 +30,7 @@ def create(request):
 def index(request):
     # 모든 게시물 조회
     articles = Article.objects.all()
+
     return render(request, 'board/index.html', {
         'articles' : articles,
     })
@@ -39,8 +40,14 @@ def index(request):
 def detail(request, pk):
     # article = Article.objects.get(pk=pk)
     article = get_object_or_404(Article, pk=pk)
+    # 댓글 작성 HTML
+    form = CommentForm()
+    comments = article.comment_set.all()
+
     return render(request, 'board/detail.html', {
         'article' : article,
+        'form' : form, 
+        'comments' : comments
     })
 
 
@@ -59,7 +66,6 @@ def edit(request, pk):
             return redirect('board:detail', article.pk)
         
     return render(request, 'board/form.html', {
-        # 'article' : article,
         'form' : form,
     })
 
@@ -75,3 +81,24 @@ def delete(request, pk):
 
 # URL에서 Delete 를 입력하면 GET 방식으로 지워진다.
 # 따로 설정해줘야 Delete 가 발생하지 않는다.
+
+
+# comment 관련 
+@require_POST
+def create_comment(request, pk):
+    # 게시글을 찾아서 댓글을 나타내는 것이기 때문에 article 을 가져와줘야 한다.
+    article = get_object_or_404(Article, pk=pk)
+    form = CommentForm(data=request.POST)
+    if form.is_valid:
+        comment = form.save(commit=False)
+        comment.article_id = article
+        comment.user = request.user
+        comment.save()
+    return redirect('board:detail', article.pk)
+
+@require_POST
+def delete_comment(request, pk, comment_pk):
+    article = get_object_or_404(Article, pk=pk)
+    comment = get_object_or_404(Comment, pk = comment_pk)
+    comment.delete()
+    return redirect('board:detail', article.pk)
