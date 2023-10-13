@@ -21,6 +21,7 @@ def new(request):
         form = StudentForm(data = request.POST)
         if form.is_valid():
             student = form.save(commit=False)
+            # student를 작성한 user 가 요청한 user 인지를 확인
             student.user = request.user
             form.save()
             return redirect('crud:detail', student.pk)
@@ -44,7 +45,10 @@ def index(request):
 def detail(request, pk):
     # student 값이 맞으면 불러오고 아니면 404 error 가 뜬다.
     student = get_object_or_404(Student, pk=pk)
+
+    # Reply 를 작성할 수 있는 Form 을 불러와준다.
     form = ReplyForm()
+
     # stundent 에서 reply를 역참조한다(1에서 n 값을 가져온다.)
     replys = student.reply_set.all()
 
@@ -96,7 +100,7 @@ def delete(request, pk):
     # view 에서 redirect -> "crud:index" 이렇게 쓰면 된다.
 
 @login_required
-def univ_create(request, pk):
+def reply_create(request, pk):
     # 댓글 작성을 위해서 일단 게시물에 연결해줘야 하기 때문에 student.pk 가 필요하다.
     student = get_object_or_404(Student, pk=pk)
     # 나타낼 form (틀)은 Reply model 을 바탕으로 작성한 ReplyForm 이다.
@@ -117,7 +121,7 @@ def univ_create(request, pk):
         
 
 @login_required
-def univ_delete(request, pk, reply_pk):
+def reply_delete(request, pk, reply_pk):
     # 작성된 글의 pk 값이 필요
     student = get_object_or_404(Student, pk=pk)
     # 글에 작성되어져 있는 univ 의 reply 값이 필요하다.

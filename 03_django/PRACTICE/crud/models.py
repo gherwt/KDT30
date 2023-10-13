@@ -18,4 +18,4 @@ class Reply(models.Model):
      # 학생 정보
      student = models.ForeignKey(Student, on_delete=models.CASCADE)
      content = models.CharField(max_length=200)
-     rank = models.IntegerField(max_length=100)
+     rank = models.IntegerField(max_length=10)

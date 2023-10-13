@@ -16,7 +16,7 @@ urlpatterns = [
     path('<int:pk>/update/', views.update, name = 'update'), # ex) crud:edit
     path('<int:pk>/delete/', views.delete, name = 'delete'),  # ex) crud:delete
     
-    path('<int:pk>/univ/create/', views.univ_create, name = 'univ_create'), 
-    path('<int:pk>/univ/<int:reply_pk>/delete/', views.univ_delete, name = 'univ_delete'),  
+    path('<int:pk>/univ/create/', views.reply_create, name = 'reply_create'), 
+    path('<int:pk>/univ/<int:reply_pk>/delete/', views.reply_delete, name = 'reply_delete'),  
 
 ]
