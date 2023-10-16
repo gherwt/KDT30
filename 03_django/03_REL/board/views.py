@@ -115,7 +115,7 @@ def delete_comment(request, pk, comment_pk):
     comment = get_object_or_404(Comment, pk = comment_pk)
 
     if request.user != comment.user:
-        return redirect('board:index', )
+        return redirect('board:detail', )
 
     comment.delete()
     return redirect('board:detail', article.pk)

@@ -32,10 +32,26 @@ class StudentForm(forms.ModelForm):
         fields = '__all__'
 
 
-
 class ReplyForm(forms.ModelForm):
+    
+    CHOICES = [
+        (1, '★'),
+        (2, '★★'),
+        (3, '★★★'),
+        (4, '★★★★'),
+        (5, '★★★★★'),
+    ]
+
+    rank = forms.ChoiceField(
+        widget=forms.Select(),
+        choices=CHOICES
+    )
             
     class Meta:
         model = Reply
+
+        # 포함되는 것을 적어준다.
         fields = ("content", "rank",)
+        
+        # exclude = ('user', 'student') 도 가능하다.
         

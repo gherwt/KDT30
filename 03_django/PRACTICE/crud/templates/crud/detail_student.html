@@ -2,14 +2,13 @@
 {% if request.user.is_authenticated %}
 
 <!-- univ_create 를 실행하는데 student.pk 와 연결되게 -->
-
 <form action="{% url "crud:reply_create" student.pk%}" method = "POST">
     
     {% csrf_token %}
     <!--ReplyForm 이 나오게 한다.-->
     {{ form }}
 
-    <button>Reply</button>
+    <button>댓글 작성</button>
 </form>
 {% endif %}
 
@@ -22,10 +21,10 @@
     <li> user: {{reply.user}} rank: {{reply.rank}}
         <!-- 요청 user 가 reply 를 작성한 유저와 같을 경우-->
         {% if request.user == reply.user %}
-            <form action= "{% url "crud:reply_delete" student.pk reply.pk %}" method = "POST" style="display: inline-block">
+        <form action= "{% url "crud:reply_delete" student.pk reply.pk %}" method = "POST" style= "display: inline-block;">
             {% csrf_token %}
             <button onclick = "return confirm('삭제하시겠습니까?')">삭제</button>
-            </form>
+        </form>
         {% endif %}
     </li>
     <hr>
