@@ -15,6 +15,7 @@ class Article(models.Model):
     # Timestamp => 생성시간/수정시간
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+    like_users = models.ManyToManyField(User, related_name='like_articles')
 
 class Comment(models.Model):
 
@@ -25,3 +26,4 @@ class Comment(models.Model):
     content = models.CharField(max_length=50)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
+
