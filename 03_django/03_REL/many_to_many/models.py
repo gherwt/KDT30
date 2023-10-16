@@ -21,6 +21,7 @@ class Movie(models.Model):
 #     movie = models.ForeignKey(Movie)
 
 if __name__ == '__main__':
+    
     # python manage.py shell_plus
     m1 = Movie.objects.get(pk = 1)
     m2 = Movie.objects.get(pk = 2)

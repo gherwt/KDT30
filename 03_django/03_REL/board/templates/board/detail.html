@@ -16,7 +16,6 @@
    {% if request.user.is_authenticated %}
    <form action="{% url "board:like" article.pk %}" method = "POST">
       {% csrf_token %}
-      {{article.like_user}}
       <button>좋아요 ({{article.like_users.count}})</button>
    </form>
 
