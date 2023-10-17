@@ -44,12 +44,15 @@ def detail(request, pk):
     article = get_object_or_404(Article, pk=pk)
     # 댓글 작성 HTML
     form = CommentForm()
+    # article 에 request.user 가 좋아요를 눌렀는가???
     comments = article.comment_set.all()
+    is_like = article.like_users.filter(pk=request.user.pk).exists()
 
     return render(request, 'board/detail.html', {
         'article' : article,
         'form' : form, 
-        'comments' : comments
+        'comments' : comments,
+        'is_like': is_like, 
     })
 
 
@@ -128,8 +131,21 @@ def like(request, pk):
     # detail 에 버튼 필요 -> 여기 함수에 진입 -> 다시 detail로 리다이렉트
     article = get_object_or_404(Article, pk=pk)
     user = request.user
-    article.like_users.add(user)
 
-    # user.like_users.add(article) 위, 아래가 같다
+    # 현재 게시글에 좋아요를 누른 사용자 전체 중에 지금 요청보낸 이가 있다면
+    # if user in article.like_users.all(): # Python
+    # 게시글에 좋아요가 많을 경우에는 사용자에 대해서 찾는다.
+    # if article in user.like_articles():
+
+    if article.like_users.filter(pk=user.pk).exists():
+        # 좋아요를 눌랐다면, 좋아요를 취소할 수 있도록 할 수 있게 한다.
+        article.like_users.remove(user) 
+
+
+    # 만약 요청을 보낸 사용자가 기존에 좋아요를 누르지 않았다면,
+    else:
+        article.like_users.add(user) 
+        # user.like_users.add(article) 위, 아래가 같다
+
     
     return redirect('board:detail', article.pk)
