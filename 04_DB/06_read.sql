@@ -24,7 +24,7 @@ SELECT * FROM cats;
 SELECT name FROM cats;
 SELECT age, breed FROM cats;
 
--- 단일 조회 , where을 사용한 조건식
+-- 단일 조회 , where을 사용한 조건식 where 이 if 구문이라고 보면 된다.
 SELECT * FROM cats WHERE age=4
 SELECT name FROM cats WHERE age=4;
 SELECT age, breed FROM cats WHERE age=4;
