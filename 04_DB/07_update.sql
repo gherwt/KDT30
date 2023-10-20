@@ -1,5 +1,6 @@
 -- 07_update.sql
 -- UPDATE <table> SET <cols>=<val> WHERE <contition>
+-- 파일을 수정해준다.edit
 
 SELECT 
     *

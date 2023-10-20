@@ -5,6 +5,7 @@
    {{ form }}
    <button>댓글 작성</button>
 </form>
+
 {% endif %}
 
 <div>
@@ -19,7 +20,6 @@
             <button onclick = "return confirm('댓글 삭제?')">삭제</button>
          </form>
          {% endif %}
-      </li>
-   
+      </li>  
    {% endfor %}
 </div>

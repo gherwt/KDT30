@@ -1,2 +1,0 @@
-05_데이터분석/ filter=lfs diff=lfs merge=lfs -text
-05_데이터분석/시각화분석예제/.data/서울특별시_일반음식점.csv filter=lfs diff=lfs merge=lfs -text

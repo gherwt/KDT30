@@ -7,7 +7,18 @@
 <p>
    {{article.content}}
 </p>
-
+<div>
+   {% if request.user.is_authenticated %}
+   <form action="{% url "board:like" article.pk %}" method = "POST">
+      {% csrf_token %}
+      {% if is_like  %}
+      <button>좋아요 취소 ({{article.like_users.count}}) </button>
+      {% else %}
+      <button>좋아요 ({{article.like_users.count}})</button>
+      {% endif %}
+   </form>
+   {% endif %}
+</div>
 
 {% if article.user == request.user %}
 
@@ -28,10 +39,11 @@
 
 {% endif %}
 
-
 <hr>
 <!-- include 를 통해서 부품화 시킬 수 있다.-->
 {% include "board/detail_comment.html" %}
+
+
 
 
 {% endblock content %}

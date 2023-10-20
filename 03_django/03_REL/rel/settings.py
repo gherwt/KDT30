@@ -43,6 +43,7 @@ INSTALLED_APPS = [
     # my apps
     'board',
     'accounts',
+    'many_to_many',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
